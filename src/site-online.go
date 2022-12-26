@@ -8,19 +8,22 @@ import (
 
 func main() {
 	displayIntro()
-	displayMenu()
 
-	switch getOption() {
-	case 1:
-		startMonitoring()
-	case 2:
-		fmt.Println("Displaying logs...")
-	case 3:
-		fmt.Println("Leaving the program")
-		os.Exit(0)
-	default:
-		fmt.Println("I don't know this command")
-		os.Exit(1)
+	for {
+		displayMenu()
+
+		switch getOption() {
+		case 1:
+			startMonitoring()
+		case 2:
+			fmt.Println("Displaying logs...")
+		case 3:
+			fmt.Println("Leaving the program")
+			os.Exit(0)
+		default:
+			fmt.Println("I don't know this command")
+			os.Exit(1)
+		}
 	}
 }
 
