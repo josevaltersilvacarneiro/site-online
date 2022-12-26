@@ -16,4 +16,14 @@ func main() {
 
 	fmt.Print("Type the option: ")
 	fmt.Scan(&option)
+
+	if option == 1 {
+		fmt.Println("Monitoring...")
+	} else if option == 2 {
+		fmt.Println("Displaying logs...")
+	} else if option == 3 {
+		fmt.Println("Leaving the program")
+	} else {
+		fmt.Println("I don't know this command")
+	}
 }
