@@ -51,18 +51,25 @@ func getOption() int {
 }
 
 func startMonitoring() {
-	var site string
 	fmt.Println("Monitoring...")
 
-	fmt.Print("Type the site, please: ")
-	fmt.Scan(&site)
+	sites := []string{
+		"https://google.com",
+		"https://alura.com.br",
+		"https://caelum.com.br",
+		"https://xvideos.com",
+	}
 
-	response, _ := http.Get(site)
+	for i := 0; i < len(sites); i++ {
+		site := sites[i]
+		response, _ := http.Get(site)
 
-	if response.StatusCode == 200 {
-		fmt.Println("The site", site, "was loaded successfully")
-	} else {
-		fmt.Println("The site", site, "is in trouble. Status:",
-			response.StatusCode)
+		if response.StatusCode == 200 {
+			fmt.Println("The site", site, "was loaded successfully")
+		} else {
+			fmt.Println("The site", site, "is in trouble. Status:",
+				response.StatusCode)
+		}
+
 	}
 }
