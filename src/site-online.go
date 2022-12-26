@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 )
 
 func main() {
@@ -60,8 +61,11 @@ func startMonitoring() {
 		"https://xvideos.com",
 	}
 
-	for _, site := range sites {
-		testSite(site)
+	for i := 0; i < 5; i++ {
+		for _, site := range sites {
+			testSite(site)
+		}
+		time.Sleep(5 * time.Second)
 	}
 }
 
