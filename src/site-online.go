@@ -14,5 +14,6 @@ func main() {
 	fmt.Println("2 - Show logs")
 	fmt.Println("3 - Exit")
 
-	fmt.Scanf("%d", &option)
+	fmt.Print("Type the option: ")
+	fmt.Scan(&option)
 }
