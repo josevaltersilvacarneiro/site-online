@@ -60,8 +60,7 @@ func startMonitoring() {
 		"https://xvideos.com",
 	}
 
-	for i := 0; i < len(sites); i++ {
-		site := sites[i]
+	for _, site := range sites {
 		response, _ := http.Get(site)
 
 		if response.StatusCode == 200 {
