@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -11,7 +12,7 @@ func main() {
 
 	switch getOption() {
 	case 1:
-		fmt.Println("Monitoring...")
+		startMonitoring()
 	case 2:
 		fmt.Println("Displaying logs...")
 	case 3:
@@ -44,4 +45,21 @@ func getOption() int {
 	fmt.Scan(&option)
 
 	return option
+}
+
+func startMonitoring() {
+	var site string
+	fmt.Println("Monitoring...")
+
+	fmt.Print("Type the site, please: ")
+	fmt.Scan(&site)
+
+	response, _ := http.Get(site)
+
+	if response.StatusCode == 200 {
+		fmt.Println("The site", site, "was loaded successfully")
+	} else {
+		fmt.Println("The site", site, "is in trouble. Status:",
+			response.StatusCode)
+	}
 }
