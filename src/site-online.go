@@ -3,21 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	var name string = "Jose Valter"
-	var version float32 = 1.1
-	var option int
+	displayIntro()
+	displayMenu()
 
-	fmt.Println("Hello", name)
-	fmt.Println("This program is in the version", version)
-
-	fmt.Println("1 - Start Monitoring")
-	fmt.Println("2 - Show logs")
-	fmt.Println("3 - Exit")
-
-	fmt.Print("Type the option: ")
-	fmt.Scan(&option)
-
-	switch option {
+	switch getOption() {
 	case 1:
 		fmt.Println("Monitoring...")
 	case 2:
@@ -27,4 +16,27 @@ func main() {
 	default:
 		fmt.Println("I don't know this command")
 	}
+}
+
+func displayIntro() {
+	var name string = "Jose Valter"
+	var version float32 = 1.1
+
+	fmt.Println("Hello", name)
+	fmt.Println("This program is in the version", version)
+}
+
+func displayMenu() {
+	fmt.Println("1 - Start Monitoring")
+	fmt.Println("2 - Show logs")
+	fmt.Println("3 - Exit")
+}
+
+func getOption() int {
+	var option int
+
+	fmt.Print("Type the option: ")
+	fmt.Scan(&option)
+
+	return option
 }
