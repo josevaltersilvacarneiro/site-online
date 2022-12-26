@@ -7,6 +7,9 @@ import (
 	"time"
 )
 
+const numberOfTimes = 5
+const delay = 5
+
 func main() {
 	displayIntro()
 
@@ -61,11 +64,11 @@ func startMonitoring() {
 		"https://xvideos.com",
 	}
 
-	for i := 0; i < 5; i++ {
+	for i := 0; i < numberOfTimes; i++ {
 		for _, site := range sites {
 			testSite(site)
 		}
-		time.Sleep(5 * time.Second)
+		time.Sleep(delay * time.Second)
 	}
 }
 
