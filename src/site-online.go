@@ -61,14 +61,17 @@ func startMonitoring() {
 	}
 
 	for _, site := range sites {
-		response, _ := http.Get(site)
+		testSite(site)
+	}
+}
 
-		if response.StatusCode == 200 {
-			fmt.Println("The site", site, "was loaded successfully")
-		} else {
-			fmt.Println("The site", site, "is in trouble. Status:",
-				response.StatusCode)
-		}
+func testSite(site string) {
+	response, _ := http.Get(site)
 
+	if response.StatusCode == 200 {
+		fmt.Println("The site", site, "was loaded successfully")
+	} else {
+		fmt.Println("The site", site, "is in trouble. Status:",
+			response.StatusCode)
 	}
 }
