@@ -92,6 +92,8 @@ func getSites() []string {
 		sites = append(sites, strings.TrimSpace(site))
 	}
 
+	file.Close()
+
 	return sites
 }
 
