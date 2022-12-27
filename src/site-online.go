@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -57,12 +60,7 @@ func getOption() int {
 func startMonitoring() {
 	fmt.Println("Monitoring...")
 
-	sites := []string{
-		"https://google.com",
-		"https://alura.com.br",
-		"https://caelum.com.br",
-		"https://xvideos.com",
-	}
+	sites := getSites()
 
 	for i := 0; i < numberOfTimes; i++ {
 		for _, site := range sites {
@@ -70,6 +68,31 @@ func startMonitoring() {
 		}
 		time.Sleep(delay * time.Second)
 	}
+}
+
+func getSites() []string {
+	var sites []string
+
+	file, err := os.Open("sites.txt")
+
+	if err != nil {
+		fmt.Println("There was an error!", err)
+	}
+
+	reader := bufio.NewReader(file)
+	for {
+		site, err := reader.ReadString('\n')
+
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			fmt.Println("There was an error!", err)
+		}
+
+		sites = append(sites, strings.TrimSpace(site))
+	}
+
+	return sites
 }
 
 func testSite(site string) {
