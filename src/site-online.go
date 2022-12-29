@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"strconv"
@@ -24,7 +25,7 @@ func main() {
 		case 1:
 			startMonitoring()
 		case 2:
-			fmt.Println("Displaying logs...")
+			showLogs()
 		case 3:
 			fmt.Println("Leaving the program")
 			os.Exit(0)
@@ -69,6 +70,18 @@ func startMonitoring() {
 		}
 		time.Sleep(delay * time.Second)
 	}
+}
+
+func showLogs() {
+	fmt.Println("Displaying logs...")
+
+	file, err := ioutil.ReadFile("log.txt")
+
+	if err != nil {
+		fmt.Println("There was an error!", err)
+	}
+
+	fmt.Println(string(file))
 }
 
 func getSites() []string {
