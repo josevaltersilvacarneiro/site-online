@@ -135,6 +135,13 @@ func testSite(site string) {
 }
 
 func logRecord(site string, status bool) {
+	/*
+		This procedure opens the file `log.txt` in
+		add mode. If there is an error, it will show
+		the error. At the end, it stores the status
+		of the site in the `log.txt` file.
+	*/
+
 	file, err := os.OpenFile("log.txt", os.O_APPEND|os.O_CREATE, 0666)
 
 	if err != nil {
