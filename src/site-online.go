@@ -78,8 +78,8 @@ func showLogs() {
 		and reads its content. The content
 		is received by the variable `file` and
 		the error is received by the variable
-		`err`. If there is an error, this pro-
-		cedure shows it. At the end, it prints
+		`err`. If there is an error, this proce-
+		dure will show it. At the end, it prints
 		the logs.
 	*/
 
